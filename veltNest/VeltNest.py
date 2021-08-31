@@ -48,7 +48,7 @@ def main():
     #wymiary powierzchni roboczej lasera
     box = nest2D.Box(1200000000, 800000000)
 
-    add_figure(22, points, input)
+    add_figure(20, points, input)
     pgrp = nest2D.nest(input, box)
 
     sw = nest2D.SVGWriter()
