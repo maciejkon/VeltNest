@@ -1,44 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg height="800.000000" width="1210.000000" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g fill-rule="evenodd"><path d="M 542.673,250.73 L 691.943,250.73 L 691.943,469.23 L 542.673,469.23 L 542.673,250.73 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
+<svg height="800.000000" width="1210.000000" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g fill-rule="evenodd"><path d="M 600,352.5 L 665,352.5 L 665,447.5 L 600,447.5 L 600,352.5 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
 
-<g fill-rule="evenodd"><path d="M 393.403,250.73 L 542.673,250.73 L 542.673,469.23 L 393.403,469.23 L 393.403,250.73 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
-
-<g fill-rule="evenodd"><path d="M 691.943,250.73 L 841.213,250.73 L 841.213,469.23 L 691.943,469.23 L 691.943,250.73 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
-
-<g fill-rule="evenodd"><path d="M 508.057,250.73 L 508.057,101.46 L 726.557,101.46 L 726.557,250.73 L 508.057,250.73 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
-
-<g fill-rule="evenodd"><path d="M 508.058,618.5 L 508.058,469.23 L 726.558,469.23 L 726.558,618.5 L 508.058,618.5 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
-
-<g fill-rule="evenodd"><path d="M 726.557,250.73 L 726.557,101.46 L 945.057,101.46 L 945.057,250.73 L 726.557,250.73 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
-
-<g fill-rule="evenodd"><path d="M 726.558,618.5 L 726.558,469.23 L 945.058,469.23 L 945.058,618.5 L 726.558,618.5 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
-
-<g fill-rule="evenodd"><path d="M 358.787,469.23 L 508.058,469.23 L 508.058,687.73 L 358.787,687.73 L 358.787,469.23 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
-
-<g fill-rule="evenodd"><path d="M 358.787,32.23 L 508.057,32.23 L 508.057,250.73 L 358.787,250.73 L 358.787,32.23 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
-
-<g fill-rule="evenodd"><path d="M 841.213,250.73 L 990.483,250.73 L 990.483,469.23 L 841.213,469.23 L 841.213,250.73 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
-
-<g fill-rule="evenodd"><path d="M 508.058,767.77 L 508.058,618.5 L 726.558,618.5 L 726.558,767.77 L 508.058,767.77 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
-
-<g fill-rule="evenodd"><path d="M 174.903,434.615 L 174.903,285.345 L 393.403,285.345 L 393.403,434.615 L 174.903,434.615 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
-
-<g fill-rule="evenodd"><path d="M 209.517,434.615 L 358.787,434.615 L 358.787,653.115 L 209.517,653.115 L 209.517,434.615 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
-
-<g fill-rule="evenodd"><path d="M 358.787,285.345 L 209.517,285.345 L 209.517,66.845 L 358.787,66.845 L 358.787,285.345 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
-
-<g fill-rule="evenodd"><path d="M 726.558,767.77 L 726.558,618.5 L 945.058,618.5 L 945.058,767.77 L 726.558,767.77 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
-
-<g fill-rule="evenodd"><path d="M 990.483,250.73 L 1139.75,250.73 L 1139.75,469.23 L 990.483,469.23 L 990.483,250.73 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
-
-<g fill-rule="evenodd"><path d="M 1094.33,250.73 L 945.057,250.73 L 945.058,32.23 L 1094.33,32.23 L 1094.33,250.73 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
-
-<g fill-rule="evenodd"><path d="M 945.058,469.23 L 1094.33,469.23 L 1094.33,687.73 L 945.058,687.73 L 945.058,469.23 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
-
-<g fill-rule="evenodd"><path d="M 209.517,653.115 L 60.2475,653.115 L 60.2475,434.615 L 209.517,434.615 L 209.517,653.115 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
-
-<g fill-rule="evenodd"><path d="M 209.517,285.345 L 60.2475,285.345 L 60.2475,66.845 L 209.517,66.845 L 209.517,285.345 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
+<g fill-rule="evenodd"><path d="M 535,352.5 L 600,352.5 L 600,447.5 L 535,447.5 L 535,352.5 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
 
 
 </svg>

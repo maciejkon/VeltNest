@@ -1,9 +1,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QInputDialog, QMessageBox
 
 from ui import test5
 from veltNest import VeltNest
 
-class NestApplicationGUI(test5.Ui_MainWindow, QtWidgets.QMainWindow):
+
+class NestApplicationGUI(test5.Ui_MainWindow, QtWidgets.QMainWindow, VeltNest.NestingApp):
+
     def __init__(self):
         super(NestApplicationGUI, self).__init__()
         self.setupUi(self)
@@ -11,7 +14,12 @@ class NestApplicationGUI(test5.Ui_MainWindow, QtWidgets.QMainWindow):
         self.treeView.customContextMenuRequested.connect(self.context_menu)
         self.populate()
 
-        
+        self.treeView.clicked.connect(self.show_file_in_window)
+        self.treeView.doubleClicked.connect(self.add_file)
+        self.confim_button.clicked.connect(self.add_numbers_of_selected_files)
+        self.pushButton.clicked.connect(self.start_nest)
+
+
     def populate(self):
         path = "C:/Users/macie/PycharmProjects/VeltNest/start"
         self.model = QtWidgets.QFileSystemModel()
@@ -23,9 +31,9 @@ class NestApplicationGUI(test5.Ui_MainWindow, QtWidgets.QMainWindow):
     def context_menu(self):
         menu = QtWidgets.QMenu()
         add = menu.addAction("Add")
-        show = menu.addAction("Show")
         add.triggered.connect(self.add_file)
-        show.triggered.connect(self.show_file_in_window)
+        add = menu.addAction("Show")
+        add.triggered.connect(self.show_file_in_window)
         cursor = QtGui.QCursor()
         menu.exec_(cursor.pos())
 
@@ -34,17 +42,20 @@ class NestApplicationGUI(test5.Ui_MainWindow, QtWidgets.QMainWindow):
         file_path = self.model.filePath(index)
         self.photo_label.setPixmap(QtGui.QPixmap(file_path))
 
-    #tutaj wprowadzamy plik startowy
     def add_file(self):
-        print("File Added")
+        index = self.treeView.currentIndex()
+        file_path = self.model.filePath(index)
+        self.get_and_parse(file_path)
+        QMessageBox.about(self, "Dodanie pliku startowego", "Plik został wybrany")
 
-    #zatwierdzamy input z okna liczbowego
     def add_numbers_of_selected_files(self):
-        pass
+        number = self.textEdit.toPlainText()
+        self.add_number_of_elements_to_Database(number)
+        QMessageBox.about(self, "Dodanie liczby elementów", "Określono liczbę elementów")
 
-    #funkcja wywołująca nesting
     def start_nest(self):
-        pass
+        self.start_app(self.get_points_from_database(), self.get_numberOfElements_from_database())
+        QMessageBox.about(self, "Gotowe!", "Plik znajduje się w folderze end")
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
