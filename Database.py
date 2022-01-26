@@ -6,7 +6,7 @@ def connect():
     return conn
 
 
-def cleanDb():
+def clean_db():
     conn = connect()
     c = conn.cursor()
     c.execute("""Drop table if exists elements;""")
@@ -22,21 +22,20 @@ def cleanDb():
     conn.close()
 
 
-def addEverything(path, points, numberOfElements):
+def add_everything(path, points, number_of_elements):
     conn = connect()
 
     c = conn.cursor()
-    c.execute("Insert into elements (path, points, numberOfElements) VALUES (?,?,?)", (path, points, numberOfElements))
+    c.execute("Insert into elements (path, points, numberOfElements) VALUES (?,?,?)", (path, points, number_of_elements))
 
     conn.commit()
     conn.close()
 
 
-def addPath(path):
+def add_path(path):
     conn = connect()
 
     c = conn.cursor()
-    #c.execute("Insert into elements (path) VALUES (?)",(path,))
     c.execute("""UPDATE elements
                     SET path = ?
                     WHERE id = 1 """, (path,))
@@ -44,7 +43,7 @@ def addPath(path):
     conn.close()
 
 
-def addPoints(points):
+def add_points(points):
     conn = connect()
 
     c = conn.cursor()
@@ -57,18 +56,19 @@ def addPoints(points):
     conn.close()
 
 
-def addNumberOfElements(numberOfElements):
+def add_number_of_elements(number_of_elements):
     conn = connect()
 
     c = conn.cursor()
     c.execute("""UPDATE elements
                     SET numberOfElements = ?
-                    WHERE id = 1 """, (numberOfElements,))
+                    WHERE id = 1 """, (number_of_elements,))
 
     conn.commit()
     conn.close()
 
-def getPoints():
+
+def get_points():
     conn = connect()
 
     c = conn.cursor()
@@ -79,7 +79,7 @@ def getPoints():
     conn.close()
     return str(rows)
 
-def getNumberOfElements():
+def get_number_of_elements():
     conn = connect()
 
     c = conn.cursor()

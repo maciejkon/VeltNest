@@ -1,6 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QInputDialog, QMessageBox
-
+from PyQt5.QtWidgets import QMessageBox
 from ui import test5
 from veltNest import VeltNest
 
@@ -12,6 +11,7 @@ class NestApplicationGUI(test5.Ui_MainWindow, QtWidgets.QMainWindow, VeltNest.Ne
         self.setupUi(self)
         self.treeView.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
         self.treeView.customContextMenuRequested.connect(self.context_menu)
+        self.model = QtWidgets.QFileSystemModel()
         self.populate()
 
         self.treeView.clicked.connect(self.show_file_in_window)
@@ -19,10 +19,8 @@ class NestApplicationGUI(test5.Ui_MainWindow, QtWidgets.QMainWindow, VeltNest.Ne
         self.confim_button.clicked.connect(self.add_numbers_of_selected_files)
         self.pushButton.clicked.connect(self.start_nest)
 
-
     def populate(self):
         path = "C:/Users/macie/PycharmProjects/VeltNest/start"
-        self.model = QtWidgets.QFileSystemModel()
         self.model.setRootPath((QtCore.QDir.rootPath()))
         self.treeView.setModel(self.model)
         self.treeView.setRootIndex(self.model.index(path))
@@ -45,17 +43,32 @@ class NestApplicationGUI(test5.Ui_MainWindow, QtWidgets.QMainWindow, VeltNest.Ne
     def add_file(self):
         index = self.treeView.currentIndex()
         file_path = self.model.filePath(index)
-        self.get_and_parse(file_path)
-        QMessageBox.about(self, "Dodanie pliku startowego", "Plik został wybrany")
+        if self.check_file_format(file_path):
+            self.get_and_parse(file_path)
+            QMessageBox.about(self, "Dodanie pliku startowego", "Plik został wybrany")
+        else:
+            QMessageBox.about(self,"Zły format pliku","Plik musi posiadac rozszerzenie .SVG")
 
     def add_numbers_of_selected_files(self):
         number = self.textEdit.toPlainText()
-        self.add_number_of_elements_to_Database(number)
-        QMessageBox.about(self, "Dodanie liczby elementów", "Określono liczbę elementów")
+        if self.set_number_of_elements(number):
+            QMessageBox.about(self, "Dodanie liczby elementów", "Określono liczbę elementów")
+        else:
+            QMessageBox.about(self, "Zły typ danych", "Musisz wpisać liczbę!")
 
     def start_nest(self):
-        self.start_app(self.get_points_from_database(), self.get_numberOfElements_from_database())
-        QMessageBox.about(self, "Gotowe!", "Plik znajduje się w folderze end")
+        if not self.get_points():
+            QMessageBox.about(self, "Wybierz plik startowy", "Nie wybrałeś pliku startowego!")
+            return False
+        if not self.get_number_of_elements():
+            QMessageBox.about(self, "Wybierz Liczbę", "Nie wybrałeś liczby!")
+            return False
+        else:
+            points = self.get_points()
+            numberOfElements = self.get_number_of_elements()
+            if self.start_app(points, numberOfElements):
+                QMessageBox.about(self, "Gotowe!", "Plik znajduje się w folderze end")
+
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])

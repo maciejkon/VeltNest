@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg height="800.000000" width="1210.000000" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g fill-rule="evenodd"><path d="M 600,352.5 L 665,352.5 L 665,447.5 L 600,447.5 L 600,352.5 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
+<svg height="800.000000" width="1210.000000" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g fill-rule="evenodd"><path d="M 585.827,385.827 L 614.173,385.827 L 614.173,414.173 L 585.827,414.173 L 585.827,385.827 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
 
-<g fill-rule="evenodd"><path d="M 535,352.5 L 600,352.5 L 600,447.5 L 535,447.5 L 535,352.5 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
+<g fill-rule="evenodd"><path d="M 585.827,357.48 L 614.173,357.48 L 614.173,385.827 L 585.827,385.827 L 585.827,357.48 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
+
+<g fill-rule="evenodd"><path d="M 585.827,414.173 L 614.173,414.173 L 614.173,442.52 L 585.827,442.52 L 585.827,414.173 z " style="fill: none; stroke: black; stroke-width: 1px;"/></g>
 
 
 </svg>

@@ -1,49 +1,79 @@
+import os
 import nest2D
 import svgpathtools
 import shutil
-
-import Database
 import Database as Db
 
 
 class NestingApp:
 
-    @classmethod
-    def get_points_from_database(cls):
-        points = Db.getPoints()
-        list_of_points = list(points.replace("[", "").replace("]", "").replace("(", "").replace(")", "").replace(" ","").replace("'", "").split(","))
-        return list_of_points
+    def check_if_database_is_empty(self, data_to_check):
+        substring = "DEFAULT"
+        try:
+            data_to_check.index(substring)
+        except ValueError:
+            return False
+        else:
+            return True
+
+    def check_file_format(self, name_of_file):
+        svg_file_extension = ".svg"
+        name, extension = os.path.splitext(name_of_file)
+        try:
+            extension.index(svg_file_extension)
+        except ValueError:
+            return False
+        else:
+            return True
 
     @classmethod
-    def get_numberOfElements_from_database(cls):
-        number = Db.getNumberOfElements()
-        number = number.replace("[(","").replace(",)]","")
-        return int(number)
+    def get_points(cls):
+        points = Db.get_points()
+        if cls.check_if_database_is_empty(cls, points):
+            return False
+        else:
+            list_of_points = list(
+                points.replace("[", "").replace("]", "").replace("(", "").replace(")", "").replace(" ", "").replace(
+                "'", "").split(","))
+            return list_of_points
 
     @classmethod
-    def add_number_of_elements_to_Database(cls, number):
-        Db.addNumberOfElements(number)
+    def get_number_of_elements(cls):
+        number = Db.get_number_of_elements()
+        if cls.check_if_database_is_empty(cls, number):
+            return False
+        else:
+            number = number.replace("[(", "").replace(",)]", "")
+            return int(number)
 
     @classmethod
-    def get_and_parse(cls, nameOfSvgFile):
-        Db.cleanDb()
-        Db.addPath(nameOfSvgFile)
-        cls.parse_path(cls.get_svg_file(nameOfSvgFile))
+    def set_number_of_elements(cls, number):
+        try:
+            if number.isdigit():
+                Db.add_number_of_elements(number)
+                return True
+        except TypeError:
+            return False
 
     @classmethod
-    def get_svg_file(cls, nameOfSvgFile):
-        paths, attributes, svg_attributes = svgpathtools.svg2paths2(nameOfSvgFile)
+    def get_and_parse(cls, name_of_svg_file):
+        Db.add_path(name_of_svg_file)
+        cls.parse_path(cls.get_svg_file(name_of_svg_file))
+
+    @classmethod
+    def get_svg_file(cls, name_of_svg_file):
+        paths, attributes, svg_attributes = svgpathtools.svg2paths2(name_of_svg_file)
         return paths
 
     @classmethod
     def parse_path(cls, path):
+        scale_multiplier = 100000
         raw_list_of_points = str(path[0].d()).replace("M", "").replace("L", "").replace("  ", ",").split(",")
         final_list_of_points = []
         for x in range(0, 10):
             item = float(raw_list_of_points[x])
-            final_list_of_points.append(item*100000)
-        Database.addPoints(str(final_list_of_points))
-        #return str(final_list_of_points)
+            final_list_of_points.append(item*scale_multiplier)
+        Db.add_points(str(final_list_of_points))
 
     @classmethod
     def add_figure(cls, number_of_figures_to_nest, list_of_points, items):
@@ -80,40 +110,9 @@ class NestingApp:
 
         try:
             shutil.move(original_outfile_path, target_outfile_path)
-            print(f"Plik końcowy został utworzony w {target_outfile_path}")
-            Db.cleanDb()
+            Db.clean_db()
+            return True
         except FileNotFoundError:
-            print("Proces nestingu zakończył się niepowodzeniem")
+            return False
 
-#sprawdzanie nestingu lokalnie bez GUI
-# def start_app():
-#
-#     original_outfile_path = r'C:\Users\macie\PycharmProjects\VeltNest\endFile.svg'
-#     target_outfile_path = r'C:\Users\macie\PycharmProjects\VeltNest\end\endFile.svg'
-#
-#     name = 'C:/Users/macie/PycharmProjects/VeltNest/start/prostokat.svg'
-#     path = NestingApp.get_svg_file(name)
-#     points = NestingApp.parse_path(path)
-#     numberOfElementsToNest = 15
-#
-#     input = []
-#     # wymiary powierzchni roboczej lasera
-#     box = nest2D.Box(1200000000, 800000000)
-#
-#     NestingApp.add_figure(numberOfElementsToNest, points, input)
-#
-#     pgrp = nest2D.nest(input, box)
-#
-#     sw = nest2D.SVGWriter()
-#     sw.write_packgroup(pgrp)
-#     sw.save()
-#
-#     try:
-#         shutil.move(original_outfile_path, target_outfile_path)
-#         print(f"Plik końcowy został utworzony w {target_outfile_path}")
-#     except FileNotFoundError:
-#         print("Proces nestingu zakończył się niepowodzeniem")
-#
-#
-# if __name__ == '__main__':
-#     start_app()
+
