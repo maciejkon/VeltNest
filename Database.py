@@ -32,7 +32,7 @@ def add_everything(path, points, number_of_elements):
     conn.close()
 
 
-def add_path(path):
+def add_path_of_file(path):
     conn = connect()
 
     c = conn.cursor()
@@ -67,6 +67,16 @@ def add_number_of_elements(number_of_elements):
     conn.commit()
     conn.close()
 
+def get_name():
+    conn = connect()
+
+    c = conn.cursor()
+    c.execute("Select path from elements")
+    rows = c.fetchall()
+
+    conn.commit()
+    conn.close()
+    return str(rows)
 
 def get_points():
     conn = connect()

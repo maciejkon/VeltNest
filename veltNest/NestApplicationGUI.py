@@ -12,11 +12,11 @@ class NestApplicationGUI(test5.Ui_MainWindow, QtWidgets.QMainWindow, VeltNest.Ne
         self.treeView.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
         self.treeView.customContextMenuRequested.connect(self.context_menu)
         self.model = QtWidgets.QFileSystemModel()
-        self.populate()
 
+        self.populate()
         self.treeView.clicked.connect(self.show_file_in_window)
         self.treeView.doubleClicked.connect(self.add_file)
-        self.confim_button.clicked.connect(self.add_numbers_of_selected_files)
+        self.confim_button.clicked.connect(self.add_number_of_selected_files)
         self.pushButton.clicked.connect(self.start_nest)
 
     def populate(self):
@@ -44,12 +44,13 @@ class NestApplicationGUI(test5.Ui_MainWindow, QtWidgets.QMainWindow, VeltNest.Ne
         index = self.treeView.currentIndex()
         file_path = self.model.filePath(index)
         if self.check_file_format(file_path):
-            self.get_and_parse(file_path)
+            self.set_file_path(file_path)
+            self.get_and_parse()
             QMessageBox.about(self, "Dodanie pliku startowego", "Plik został wybrany")
         else:
             QMessageBox.about(self,"Zły format pliku","Plik musi posiadac rozszerzenie .SVG")
 
-    def add_numbers_of_selected_files(self):
+    def add_number_of_selected_files(self):
         number = self.textEdit.toPlainText()
         if self.set_number_of_elements(number):
             QMessageBox.about(self, "Dodanie liczby elementów", "Określono liczbę elementów")

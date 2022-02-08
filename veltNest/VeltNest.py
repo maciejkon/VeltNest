@@ -27,13 +27,23 @@ class NestingApp:
             return True
 
     @classmethod
+    def get_file_name(cls):
+        name_of_file = Db.get_name()
+        if cls.check_if_database_is_empty(cls, name_of_file):
+            return False
+        else:
+            name_of_file = name_of_file.replace("[(", "").replace(",)]", "").replace("\'","")
+            return str(name_of_file)
+
+    @classmethod
     def get_points(cls):
         points = Db.get_points()
         if cls.check_if_database_is_empty(cls, points):
             return False
         else:
             list_of_points = list(
-                points.replace("[", "").replace("]", "").replace("(", "").replace(")", "").replace(" ", "").replace(
+                points.replace("[", "").replace("]", "").replace("(", "")
+                    .replace(")", "").replace(" ", "").replace(
                 "'", "").split(","))
             return list_of_points
 
@@ -56,9 +66,8 @@ class NestingApp:
             return False
 
     @classmethod
-    def get_and_parse(cls, name_of_svg_file):
-        Db.add_path(name_of_svg_file)
-        cls.parse_path(cls.get_svg_file(name_of_svg_file))
+    def set_file_path(cls, path):
+        Db.add_path_of_file(path)
 
     @classmethod
     def get_svg_file(cls, name_of_svg_file):
@@ -66,8 +75,13 @@ class NestingApp:
         return paths
 
     @classmethod
+    def get_and_parse(cls):
+        name_of_svg_file = cls.get_file_name()
+        cls.parse_path(cls.get_svg_file(name_of_svg_file))
+
+    @classmethod
     def parse_path(cls, path):
-        scale_multiplier = 100000
+        scale_multiplier = 1000000
         raw_list_of_points = str(path[0].d()).replace("M", "").replace("L", "").replace("  ", ",").split(",")
         final_list_of_points = []
         for x in range(0, 10):

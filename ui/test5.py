@@ -8,15 +8,19 @@ class Ui_MainWindow(object):
         MainWindow.resize(800, 600)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton.setGeometry(QtCore.QRect(290, 430, 191, 61))
         self.pushButton.setObjectName("pushButton")
+
         self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
         self.textEdit.setGeometry(QtCore.QRect(420, 360, 61, 31))
         self.textEdit.setObjectName("textEdit")
+
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(300, 360, 101, 31))
         self.label.setObjectName("label")
+
         self.treeView = QtWidgets.QTreeView(self.centralwidget)
         self.treeView.setGeometry(QtCore.QRect(70, 160, 411, 192))
         self.treeView.setObjectName("treeView")
